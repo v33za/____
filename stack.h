@@ -5,12 +5,13 @@
 class Stack{
 private:
 	 NodePtr top;
+  NodePtr new_node;
 	int size;
 public:
     Stack(NodePtr = NULL);
     ~Stack();
     int pop();
-    void push(int);
+    void push(char);
 };
 
 Stack::Stack(NodePtr t){
@@ -23,20 +24,15 @@ Stack::Stack(NodePtr t){
 	 size=0;
    }
 }
-void Stack::push(int x){
-   NodePtr newnode=new NODE(x);
-  //1
+void Stack::push(char x){
+   NodePtr new_node=new NODE(x);
   if(new_node){
-    new_node->set_next(top);
-    top = new node;
+	 	new_node->set_next(top); 
+    top=new_node;
     ++size;
-
-    cout<<"pushing"<<x<<endl;
-
-      
    }
- else cout<<"No memory left for new nodes"<<endl;
-
+ else cout<<"\n===No memory left for new nodes===\n"<<endl;
+		 
 }
 int Stack::pop(){
  	   NodePtr t=top;
@@ -45,29 +41,22 @@ int Stack::pop(){
     
      value=t->get_value();
      top=t->get_next();
-
-    delete t;
-     --size;
+    --size;
+     delete t;
      return value;
      }
     
-		cout<<"Empty stack"<<endl;
+		cout<<"\n===Empty stack===\n"<<endl;
    return 0;
 	}
 Stack::~Stack(){
-   cout<<"Clearing all stacks"<<endl;
+   cout<<"\n===Clearing all stacks===\n"<<endl;
   	int i;
   NodePtr t=top;
 for(i=0;i<size;i++){
-     top=top->get_next();
-  delete t;
-  t=top;
-
+    top=top->get_next();
+     delete t;
+     t=top;
   }
-
-
 }
-
-
-
 #endif

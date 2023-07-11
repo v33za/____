@@ -1,42 +1,29 @@
 #ifndef node_h
-#define  node_h
+#define node_h
 
-class NODE{
-	int data;
-	NODE *nextPtr;
+class NODE {
+  char data;
+  NODE *nextPtr;
+
 public:
-	NODE(char);
-	~NODE();
+  NODE(char);
+  ~NODE();
   char get_value();
-	void set_next(NODE *);
-	NODE* get_next();
+  void set_next(NODE *);
+  NODE *get_next();
 };
-typedef NODE* NodePtr;
+typedef NODE *NodePtr;
 
-NODE::NODE(char x){
-	data=x;
-	nextPtr=NULL;
-
+NODE::NODE(char x) {
+  data = x;
+  nextPtr = NULL;
 }
-int NODE::get_value(){
-	return data;
+char NODE::get_value() { return data; }
 
-}
+NODE *NODE::get_next() { return nextPtr; }
 
-NODE* NODE::get_next(){
-	return nextPtr;
+void NODE::set_next(NODE *t) { nextPtr = t; }
 
-}
-
-void NODE::set_next(NODE *t){
-	 nextPtr=t;
-
-}
-
-NODE::~NODE(){
-	 cout<<"deleting " <<data<<endl;
-
-}
-
+NODE::~NODE() { cout << "deleting " << data << endl; }
 
 #endif
